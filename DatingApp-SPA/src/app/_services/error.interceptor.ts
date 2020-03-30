@@ -15,10 +15,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                     return throwError(error.stattusText);
                 }
 
-                if (error instanceof HttpErrorResponse){
-                    const applicatioinError = error.headers.get('Application-Error'); 
+                if (error instanceof HttpErrorResponse) {
+                    const applicatioinError = error.headers.get('Application-Error');
                     // Application-Error is the same defined in the API error Handler Extention
-                    if(applicatioinError) {
+                    if (applicatioinError) {
                         return throwError(applicatioinError);
                     }
                 }
@@ -43,4 +43,4 @@ export const ErrorInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,
     multi: true
-}
+};
